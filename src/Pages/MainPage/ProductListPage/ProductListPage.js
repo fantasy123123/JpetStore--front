@@ -65,7 +65,7 @@ const ProductListPage=()=>{
         return <>
             {
                 data.map(value => {
-                    return <div className={'card'} style={{width:'31%',height:'42%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
+                    return <div className={'card'} style={{cursor:'pointer',width:'31%',height:'42%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
                         <div style={{width:'100%',height:'70%',display:'flex'}}>
                             <img alt={value.name} src={value.image} style={{height:'100%',width:'60%'}}/>
                             <div style={{height:'100%',width:'40%',fontSize:19,display:'flex'}}>
@@ -94,7 +94,7 @@ const ProductListPage=()=>{
                             </div>
                         </div>
                         <div style={{width:'100%',height:'30%'}}>
-                            <div style={{margin:'2.5% 2% 1% 2%',fontSize:16}}>
+                            <div style={{margin:'2.5% 3% 1% 3%',fontSize:16}}>
                                 {value.text}
                             </div>
                         </div>

@@ -6,6 +6,9 @@ import SignInPage from "./Pages/SignInPage/SignInPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import PersonalInformationPage from "./Pages/MainPage/InformationPage/PersonalInformationPage";
 import EditInformation from "./Pages/MainPage/InformationPage/EditInformation";
+import CartPage from "./Pages/MainPage/CartPage/CartPage";
+import PayPage from "./Pages/MainPage/PayPage/PayPage";
+import ProductInformationPage from "./Pages/MainPage/ProductInformationPage/ProductInformationPage";
 
 const routes=[
     {
@@ -31,6 +34,12 @@ const routes=[
             {
                 path: '/main/product',
                 element: <ProductListPage />,
+                children:[
+                    {
+                        path: '/main/product/information',
+                        element: <ProductInformationPage />,
+                    }
+                ]
             },
             {
                 path: '/main/information',
@@ -41,6 +50,14 @@ const routes=[
                         element: <EditInformation />,
                     }
                 ]
+            },
+            {
+                path: '/main/cart',
+                element: <CartPage />,
+            },
+            {
+                path: '/main/cart/pay',
+                element: <PayPage />,
             }
         ]
     }

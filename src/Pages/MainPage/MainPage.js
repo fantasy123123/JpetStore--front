@@ -29,7 +29,9 @@ const MainPage=()=>{
                     </div>
                     <div style={{width:2,height:20,backgroundColor:'whitesmoke',margin:10}}/>
                     <div style={{color:'whitesmoke',cursor:'pointer'}}>
-                        购物车
+                        <span onClick={()=>{navigate('/main/cart')}}>
+                            购物车
+                        </span>
                     </div>
                     <div style={{width:2,height:20,backgroundColor:'whitesmoke',margin:10}}/>
                     <div style={{color:'whitesmoke',cursor:'pointer',marginRight:15}}>

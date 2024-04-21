@@ -6,8 +6,10 @@ import reptile from '../HomePage/images/Reptiles.png'
 import maskLogo from './images/maskLogo.png'
 import songshu from './images/songshu.jpg'
 import cat2 from './images/cat-signin2.jpg'
+import './style.css'
 
 import {Card, Carousel, Radio} from "@arco-design/web-react";
+import {useNavigate} from "react-router-dom";
 
 
 const { Meta } = Card;
@@ -36,15 +38,22 @@ const data=[
 ]
 
 const HomePage=()=>{
+    const navigate=useNavigate()
+
     function CardList(){
         return (<Radio.Group style={{display:'flex',flexWrap:'wrap',justifyContent:'flex-start',width:'100%'}}>
             {data.map((value)=>{
                 return (
-                    <Radio key={value} value={value} style={{width:'30%', marginBottom:20,marginLeft:'1%',marginRight:'1%'}}>
+                    <Radio
+                        onClick={()=>{navigate('/main/product')}}
+                        key={value} value={value}
+                        style={{width:'30%', marginBottom:20,marginLeft:'1%',marginRight:'1%'}}
+                    >
                         {({checked})=>{
                             return (
                                 <Card
                                     hoverable
+                                    className='card-custom-hover-style'
                                     style={{width: '100%', cursor:'pointer'}}
                                     cover={
                                         <div style={{ height: '100%', overflow: 'hidden' }}>
@@ -98,7 +107,7 @@ const HomePage=()=>{
                     ))}
                 </Carousel>
             </div>
-            <div style={{width:'100%',overflow:'auto',height:'44%',textAlign:'center',marginTop:'1%'}}>
+            <div style={{width:'100%',overflow:'auto',height:'44%',textAlign:'center',paddingTop:4}}>
                 <CardList />
             </div>
         </div>
