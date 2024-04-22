@@ -1,5 +1,7 @@
 import cat from './images/cat.png'
 import './productList.css'
+import {useNavigate} from "react-router-dom";
+import {Descriptions} from "@arco-design/web-react";
 
 const data=[
     {
@@ -62,35 +64,35 @@ const data=[
 
 const ProductListPage=()=>{
     function ProductList(){
+        const navigate=useNavigate()
         return <>
             {
                 data.map(value => {
-                    return <div className={'card'} style={{cursor:'pointer',width:'31%',height:'42%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
+                    const column=[
+                        {
+                            label:'种类',
+                            value:value.categoryID
+                        },
+                        {
+                            label:'名字',
+                            value:value.name
+                        },
+                        {
+                            label:'价格',
+                            value:value.price+'元/只'
+                        }
+                    ]
+                    return <div onClick={()=>{navigate('/main/product/information')}} className={'card'} style={{cursor:'pointer',width:'31%',height:'42%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
                         <div style={{width:'100%',height:'70%',display:'flex'}}>
                             <img alt={value.name} src={value.image} style={{height:'100%',width:'60%'}}/>
-                            <div style={{height:'100%',width:'40%',fontSize:19,display:'flex'}}>
-                                <div style={{width:'30%',height:'80%',color:'grey',marginLeft:'10%',marginTop:'20%'}}>
-                                    <div style={{marginTop:'15%'}}>
-                                        种类
-                                    </div>
-                                    <div style={{marginTop:'15%'}}>
-                                        名字
-                                    </div>
-                                    <div style={{marginTop:'15%'}}>
-                                        价格
-                                    </div>
-                                </div>
-                                <div style={{width:'65%',height:'80%',marginLeft:'5%',marginTop:'20%'}}>
-                                    <div style={{marginTop:'7%'}}>
-                                        {value.categoryID}
-                                    </div>
-                                    <div style={{marginTop:'7%'}}>
-                                        {value.name}
-                                    </div>
-                                    <div style={{marginTop:'9%'}}>
-                                        {value.price} 元/只
-                                    </div>
-                                </div>
+                            <div style={{height:'100%',width:'40%',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                <Descriptions
+                                    column={1}
+                                    data={column}
+                                    labelStyle={{fontSize:17}}
+                                    valueStyle={{fontSize:17,paddingLeft:20}}
+                                    style={{marginTop:20}}
+                                />
                             </div>
                         </div>
                         <div style={{width:'100%',height:'30%'}}>

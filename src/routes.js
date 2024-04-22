@@ -34,12 +34,10 @@ const routes=[
             {
                 path: '/main/product',
                 element: <ProductListPage />,
-                children:[
-                    {
-                        path: '/main/product/information',
-                        element: <ProductInformationPage />,
-                    }
-                ]
+            },
+            {
+                path: '/main/product/information',
+                element: <ProductInformationPage />,
             },
             {
                 path: '/main/information',
