@@ -1,7 +1,7 @@
 import cat from "../ProductListPage/images/cat.png";
 import {Button, Table,Image} from '@arco-design/web-react';
-import {useEffect, useState} from "react";
-import {Outlet, useNavigate} from "react-router-dom";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const data=[
     {
@@ -72,7 +72,6 @@ const data=[
 const CartPage=()=>{
     const navigate=useNavigate()
     const [visible, setVisible] = useState(false);
-
 
     const columns1 = [
         {

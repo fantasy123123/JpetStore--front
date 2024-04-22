@@ -9,6 +9,8 @@ import EditInformation from "./Pages/MainPage/InformationPage/EditInformation";
 import CartPage from "./Pages/MainPage/CartPage/CartPage";
 import PayPage from "./Pages/MainPage/PayPage/PayPage";
 import ProductInformationPage from "./Pages/MainPage/ProductInformationPage/ProductInformationPage";
+import OrderPage from "./Pages/MainPage/OrderPage/OrderPage";
+import OrderInformationPage from "./Pages/MainPage/OrderInformationPage/OrderInformationPage";
 
 const routes=[
     {
@@ -56,7 +58,15 @@ const routes=[
             {
                 path: '/main/cart/pay',
                 element: <PayPage />,
-            }
+            },
+            {
+                path: '/main/order',
+                element: <OrderPage />,
+            },
+            {
+                path: '/main/order/information',
+                element: <OrderInformationPage />,
+            },
         ]
     }
 ]

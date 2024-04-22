@@ -98,7 +98,7 @@ const ProductInformationPage=()=>{
                         添加至购物车
                     </Button>
                     <Button onClick={()=>{
-                        navigate('/main/product')
+                        window.history.go(-1)
                     }}>
                         返回
                     </Button>

@@ -1,8 +1,25 @@
 import cat from "../ProductListPage/images/cat.png";
-import {Button, Table,Image} from '@arco-design/web-react';
+import {Button, Table, Image, Descriptions} from '@arco-design/web-react';
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
+const person= {
+    "username": "j2ee",
+    "password": "j2ee",
+    "email": "yourname@yourdomain.com",
+    "firstName": "ABC",
+    "lastName": "XYX",
+    "address1": "901 San Antonio Road",
+    "address2": "MS UCUP02-206",
+    "city": "Palo Alto",
+    "state": "CA",
+    "zip": "94303",
+    "country": "China",
+    "phone": "555-555-5555",
+    "favouriteCategoryId": "DOGS",
+    "languagePreference": "english",
+    "listOption": true,
+}
 
 const data=[
     {
@@ -70,6 +87,49 @@ const data=[
     }
 ]
 
+const description=[
+    {
+        label:'用户名',
+        value:person.username
+    },
+    {
+        label:'国家',
+        value:person.country
+    },
+    {
+        label:'姓',
+        value:person.lastName
+    },
+    {
+        label:'州',
+        value:person.state
+    },
+    {
+        label:'名',
+        value:person.firstName
+    },
+    {
+        label:'城市',
+        value:person.city
+    },
+    {
+        label:'联系方式',
+        value:person.phone
+    },
+    {
+        label:'邮箱',
+        value:person.email
+    },
+    {
+        label:'地址1',
+        value:person.address1
+    },
+    {
+        label:'地址2',
+        value:person.address2
+    },
+]
+
 const PayPage=()=>{
     const navigate=useNavigate()
     const [visible, setVisible] = useState(false);
@@ -126,7 +186,7 @@ const PayPage=()=>{
             dataIndex: 'number',
         },
         {
-            title: '价格',
+            title: '总价',
             render:(_, record) => (
                 <>
                     {record.number*record.price}元
@@ -148,9 +208,26 @@ const PayPage=()=>{
         <div style={{marginLeft:'10%',width:'80%',marginTop:'1%',textAlign:'right',fontSize:25}}>
             总价：{total}元
         </div>
-        <div style={{display:'flex',justifyContent:'right',alignItems:'center',width:'80%',marginLeft:'10%',marginTop:'1%'}}>
+        <div style={{width:'90%',height:400,backgroundColor:'white',borderRadius:10,marginLeft:'5%',marginTop:20,display:'flex',justifyContent:'space-around',alignItems:'center'}}>
+            <div style={{width:'45%',height:'90%'}}>
+                <div style={{fontSize:20,fontWeight:'bold'}}>支付信息</div>
+                <div style={{width:'100%',height:'95%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <Descriptions column={2} layout='inline-vertical' data={description} style={{marginLeft:'30%'}}/>
+                </div>
+            </div>
+            <div style={{width:'45%',height:'90%'}}>
+                <div style={{fontSize:20,fontWeight:'bold'}}>配送信息</div>
+                <div style={{width:'100%',height:'95%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <Descriptions column={2} layout='inline-vertical' data={description} style={{marginLeft:'30%'}} />
+                </div>
+            </div>
+        </div>
+        <div style={{display:'flex',justifyContent:'right',alignItems:'center',width:'80%',marginLeft:'10%',marginTop:20}}>
             <Button
                 type={"primary"}
+                onClick={()=>{
+                    navigate('/main/order/information')
+                }}
             >
                 确认支付
             </Button>
@@ -163,6 +240,9 @@ const PayPage=()=>{
             >
                 返回
             </Button>
+        </div>
+        <div style={{width:"100%",height:20}}>
+
         </div>
     </div>
 }
