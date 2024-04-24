@@ -23,7 +23,8 @@ const EditInformation =()=>{
     const [country,setCountry]=useState('')
     const [state,setState]=useState('')
     const [city,setCity]=useState('')
-    const [address,setAddress]=useState('')
+    const [address1,setAddress1]=useState('')
+    const [address2,setAddress2]=useState('')
     const [favour,setFavour]=useState('')
     const [listOption,setListOption]=useState('')
 
@@ -178,9 +179,15 @@ const EditInformation =()=>{
 
                                     <div>
                                         <div style={{fontSize:17,color:'grey'}}>
-                                            <span style={{color:'red'}}>* </span>地址
+                                            <span style={{color:'red'}}>* </span>地址1
                                         </div>
-                                        <Input defaultValue={address} style={{ marginBottom:17,marginTop:3,borderRadius:5 }} onChange={value=>{setAddress(value)}}/>
+                                        <Input defaultValue={address1} style={{ marginBottom:17,marginTop:3,borderRadius:5 }} onChange={value=>{setAddress1(value)}}/>
+                                    </div>
+                                    <div>
+                                        <div style={{fontSize:17,color:'grey'}}>
+                                            <span style={{color:'red'}}>* </span>地址2
+                                        </div>
+                                        <Input defaultValue={address2} style={{ marginBottom:17,marginTop:3,borderRadius:5 }} onChange={value=>{setAddress2(value)}}/>
                                     </div>
                                 </div>
                             </div>
@@ -216,9 +223,9 @@ const EditInformation =()=>{
                                         city !== ''  &&
                                         city !== undefined &&
                                         city !== null &&
-                                        address !== ''  &&
-                                        address !== undefined &&
-                                        address !== null &&
+                                        address1 !== ''  &&
+                                        address1 !== undefined &&
+                                        address1 !== null &&
                                         favour !== ''  &&
                                         favour !== undefined &&
                                         favour !== null &&

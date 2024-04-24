@@ -58,8 +58,12 @@ const data=[
         value:person.email
     },
     {
-        label:'地址',
-        value:person.address1+','+person.address2
+        label:'地址1',
+        value:person.address1
+    },
+    {
+        label:'地址2',
+        value:person.address2
     },
     {
         label:'最喜爱的小动物',
@@ -90,8 +94,9 @@ const PersonalInformationPage=()=>{
                 backgroundColor: 'white',
             }}>
                 <div style={{width:'85%',marginLeft:'7.5%',marginTop:'8%'}}>
-                    <div style={{border:'1px solid lightgrey',padding:'30px 60px 20px 60px',borderRadius:5}}>
-                        <Descriptions column={2} layout='inline-vertical' title='用户信息' data={data} />
+                    <div style={{border:'1px solid lightgrey',padding:'20px 60px 20px 60px',borderRadius:5,textAlign:"center"}}>
+                        <div style={{fontSize:20,fontWeight:'bold'}}>用户信息</div>
+                        <Descriptions column={2} layout='inline-vertical' data={data} style={{marginLeft:'15%',marginTop:20}}/>
                     </div>
                     <Button
                         type={'primary'}

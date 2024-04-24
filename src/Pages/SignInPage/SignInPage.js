@@ -3,7 +3,6 @@
 import './style/SignInPage.css';
 import { Divider, Tabs, Typography } from '@arco-design/web-react';
 import AccountSignIn from './component/AccountSignIn';
-import VerificationCodeSignIn from './component/VerificationCodeSignIn';
 import {Link} from "react-router-dom";
 
 const { TabPane } = Tabs;
@@ -33,16 +32,6 @@ const SignInPage = () => {
               />
               <Divider />
               <AccountSignIn />
-            </TabPane>
-
-            <TabPane key="verificationCodeSignIn" title="验证码登录">
-              <Typography.Paragraph
-                style={{
-                  textAlign: 'center',
-                }}
-              />
-              <Divider />
-              <VerificationCodeSignIn />
             </TabPane>
           </Tabs>
             <div className="accountWrapper">

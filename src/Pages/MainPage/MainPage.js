@@ -1,6 +1,7 @@
 import {Button, Input, Layout, Popover} from "@arco-design/web-react";
 import {Outlet} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import PubSub from 'pubsub-js'
 
 const Header = Layout.Header;
 const Content = Layout.Content;
@@ -27,19 +28,58 @@ const MainPage=()=>{
                         <Popover
                             content={
                             <div style={{textAlign:'center',fontSize:15}}>
-                                <div style={{cursor:'pointer',margin:5}} onClick={()=>{navigate('/main/product')}}>
+                                <div style={{cursor:'pointer',margin:5}} onClick={()=>{
+                                    if(window.location.pathname!=='/main/product') {
+                                        navigate('/main/product',{state:'CATS'})
+                                    } else {
+                                        PubSub.publish('refresh','CATS')
+                                    }
+                                }}
+                                >
                                     猫
                                 </div>
-                                <div style={{cursor:'pointer',margin:5}} onClick={()=>{navigate('/main/product')}}>
+                                <div style={{cursor:'pointer',margin:5}}
+                                     onClick={()=>{
+                                         if(window.location.pathname!=='/main/product') {
+                                             navigate('/main/product',{state:'DOGS'})
+                                         } else {
+                                             PubSub.publish('refresh','DOGS')
+                                         }
+                                     }}
+                                >
                                     狗
                                 </div>
-                                <div style={{cursor:'pointer',margin:5}} onClick={()=>{navigate('/main/product')}}>
+                                <div style={{cursor:'pointer',margin:5}}
+                                     onClick={()=>{
+                                         if(window.location.pathname!=='/main/product') {
+                                             navigate('/main/product',{state:'BIRDS'})
+                                         } else {
+                                             PubSub.publish('refresh','BIRDS')
+                                         }
+                                     }}
+                                >
                                     鸟
                                 </div>
-                                <div style={{cursor:'pointer',margin:5}} onClick={()=>{navigate('/main/product')}}>
+                                <div style={{cursor:'pointer',margin:5}}
+                                     onClick={()=>{
+                                         if(window.location.pathname!=='/main/product') {
+                                             navigate('/main/product',{state:'FISH'})
+                                         } else {
+                                             PubSub.publish('refresh','FISH')
+                                         }
+                                     }}
+                                >
                                     鱼
                                 </div>
-                                <div style={{cursor:'pointer',margin:5}} onClick={()=>{navigate('/main/product')}}>
+                                <div style={{cursor:'pointer',margin:5}}
+                                     onClick={()=>{
+                                         if(window.location.pathname!=='/main/product') {
+                                             navigate('/main/product',{state:'REPTILES'})
+                                         } else {
+                                             PubSub.publish('refresh','REPTILES')
+                                         }
+                                     }}
+                                >
                                     爬行动物
                                 </div>
                             </div>

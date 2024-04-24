@@ -4,6 +4,7 @@ import { Button, Form, Input, Message } from '@arco-design/web-react';
 import {IconSafe, IconUnlock, IconUser} from '@arco-design/web-react/icon';
 import {useEffect, useRef, useState} from 'react';
 import { useNavigate} from "react-router-dom";
+import axios from "axios";
 // import axios from "axios";
 
 const FormItem = Form.Item;
@@ -135,10 +136,10 @@ const AccountSignIn = () => {
     return (
     <>
       <Form autoComplete="off" ref={formRef}>
-        <FormItem field="用户名/邮箱" rules={[{ required: true }]}>
+        <FormItem field="用户名" rules={[{ required: true }]}>
           <Input
               onChange={value=>{name=value}}
-            placeholder="请输入用户名/邮箱"
+            placeholder="请输入用户名"
             prefix={<IconUser />}
             style={{
               height: '50px',
@@ -181,52 +182,45 @@ const AccountSignIn = () => {
               width: '125%',
               borderRadius: '5px',
             }}
-            // onClick={async () => {
-            //   if(inputCode===code) {
-            //       if (formRef.current) {
-            //           try {
-            //               await formRef.current.validate();
-            //               axios({
-            //                   method:'post',
-            //                   url:'http://192.210.174.146:5000/users/login-with-account',
-            //                   data:{
-            //                       "login": name,
-            //                       "password": password,
-            //                   }
-            //               }).then(
-            //                   res=>{
-            //                       if(res.status===200){
-            //                           Message.info('登录成功！');
-            //                           if(res.data.identity===null){
-            //                               navigate('/guide/identity',{state:res.data})
-            //                           } else {
-            //                               navigate('/main/home',{state:res.data});
-            //                           }
-            //                       }
-            //                   },
-            //                   error=>{
-            //                       if(error.response){
-            //                           if(error.response.status===404){
-            //                               Message.error('登录失败！请检查用户名/邮箱与密码是否正确。');
-            //                           }
-            //                           else {
-            //                               Message.error('Network Error!');
-            //                           }
-            //                       }
-            //                       else {
-            //                           Message.error('Network Error!');
-            //                       }
-            //                   }
-            //               )
-            //           } catch (_) {
-            //               console.log(formRef.current.getFieldsError());
-            //               Message.error('仍有未填写字段！');
-            //           }
-            //       }
-            //   } else {
-            //       Message.error('图片验证码错误！')
-            //   }
-            // }}
+            onClick={async () => {
+                if (formRef.current) {
+                    try {
+                        await formRef.current.validate();
+                        if(inputCode===code) {
+                            axios({
+                                method:'POST',
+                                url:'http://127.0.0.1:8091/auth/token',
+                                data:{
+                                    "username":name,
+                                    "password":password
+                                }
+                            }).then(
+                                res=>{
+                                    if(res.data.msg==='success') {
+                                        Message.info('登录成功！');
+                                        sessionStorage.setItem('token',res.data.jwt)
+                                        navigate('/main/home')
+                                    }
+                                    else {
+                                        Message.error('登录失败！请检查用户名与密码是否正确。');
+                                    }
+                                },
+                                error=>{
+                                    Message.error('Network Error!');
+                                }
+                            )
+                        }
+                        else {
+                                Message.error('图片验证码错误！')
+                            }
+                        } catch (_) {
+                            console.log(formRef.current.getFieldsError());
+                            Message.error('仍有未填写字段！');
+                        }
+                    }
+
+                }
+            }
           >
             登 录
           </Button>
