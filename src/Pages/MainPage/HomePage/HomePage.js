@@ -50,7 +50,7 @@ const HomePage=()=>{
                 setLoading(false)
             },
             error=>{
-                Message.error('Network Error!')
+                Message.error('获取信息失败!')
                 setLoading(false)
             }
         )

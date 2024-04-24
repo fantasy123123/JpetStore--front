@@ -8,9 +8,10 @@ import PersonalInformationPage from "./Pages/MainPage/InformationPage/PersonalIn
 import EditInformation from "./Pages/MainPage/InformationPage/EditInformation";
 import CartPage from "./Pages/MainPage/CartPage/CartPage";
 import PayPage from "./Pages/MainPage/PayPage/PayPage";
-import ProductInformationPage from "./Pages/MainPage/ProductInformationPage/ProductInformationPage";
+import ProductItemPage from "./Pages/MainPage/ProductItemPage/ProductItemPage";
 import OrderPage from "./Pages/MainPage/OrderPage/OrderPage";
 import OrderInformationPage from "./Pages/MainPage/OrderInformationPage/OrderInformationPage";
+import ItemInformationPage from "./Pages/MainPage/ProductItemInformationPage/ItemInformationPage";
 
 const routes=[
     {
@@ -38,18 +39,20 @@ const routes=[
                 element: <ProductListPage />,
             },
             {
-                path: '/main/product/information',
-                element: <ProductInformationPage />,
+                path: '/main/product/item',
+                element: <ProductItemPage />,
+            },
+            {
+                path: '/main/product/item/information',
+                element: <ItemInformationPage />,
             },
             {
                 path: '/main/information',
                 element: <PersonalInformationPage />,
-                children:[
-                    {
-                        path: '/main/information/edit',
-                        element: <EditInformation />,
-                    }
-                ]
+            },
+            {
+                path: '/main/information/edit',
+                element: <EditInformation />,
             },
             {
                 path: '/main/cart',

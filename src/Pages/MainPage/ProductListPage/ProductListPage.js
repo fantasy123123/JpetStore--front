@@ -34,7 +34,7 @@ const ProductListPage=()=>{
                 setLoading(false)
             },
             error=>{
-                Message.error('Network Error!')
+                Message.error('获取信息失败!')
                 setLoading(false)
             }
         )
@@ -61,7 +61,7 @@ const ProductListPage=()=>{
                                value:value.productId
                            }
                        ]
-                       return <div onClick={()=>{navigate('/main/product/information')}} className={'card'} style={{cursor:'pointer',width:'31%',height:'42%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
+                       return <div onClick={()=>{navigate('/main/product/item',{state:value.productId})}} className={'card'} style={{cursor:'pointer',width:'31%',height:'42%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
                            <div style={{width:'100%',height:'70%',display:'flex',justifyContent:'center'}}>
                                <img alt={value.name} src={value.descriptionImage} style={{marginTop:'5%'}}/>
                                <div style={{height:'100%',width:'50%',display:'flex',alignItems:'center',justifyContent:'center'}}>

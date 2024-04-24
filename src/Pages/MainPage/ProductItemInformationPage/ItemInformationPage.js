@@ -35,7 +35,7 @@ const column=[
     }
 ]
 
-const ProductInformationPage=()=>{
+const ItemInformationPage=()=>{
     const navigate=useNavigate()
     const [number,setNumber]=useState(1)
 
@@ -108,4 +108,4 @@ const ProductInformationPage=()=>{
     </div>
 }
 
-export default ProductInformationPage
+export default ItemInformationPage
