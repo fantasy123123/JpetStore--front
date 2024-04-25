@@ -17,7 +17,7 @@ const ProductItemPage=()=>{
                 setLoading(false)
             },
             err=>{
-                Message.info('请求数据失败！')
+                Message.error('请求数据失败！')
                 setLoading(false)
             }
         )
@@ -28,7 +28,7 @@ const ProductItemPage=()=>{
             title: 'itemID',
             dataIndex: 'itemId',
             render:(_,record)=>(
-                <Link to={'/main/product/item/information'} style={{textDecoration:'none'}}>{record.itemId}</Link>
+                <Link to={'/main/product/item/information'} state={record.itemId} style={{textDecoration:'none'}}>{record.itemId}</Link>
             )
         },
         {

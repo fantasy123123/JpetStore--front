@@ -12,6 +12,9 @@ const SignInPage = () => {
     <div className={'background'}>
       <div className={'signInCard'}>
         <div className={'signInCardImage'}>
+            <div style={{color:'white',fontSize:40,fontWeight:'bold',marginTop:5,marginLeft:20}}>
+                JPETSTORE
+            </div>
         </div>
         <div
           style={{
