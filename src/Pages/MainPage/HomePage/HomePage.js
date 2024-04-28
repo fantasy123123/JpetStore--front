@@ -4,10 +4,9 @@ import dog from '../HomePage/images/dog.png'
 import fish from '../HomePage/images/fish.png'
 import reptile from '../HomePage/images/Reptiles.png'
 import maskLogo from './images/maskLogo.png'
-import songshu from './images/songshu.jpg'
 import './style.css'
 
-import {Card, Carousel, Message, Radio} from "@arco-design/web-react";
+import {Button, Card, Carousel, Input, Message, Radio} from "@arco-design/web-react";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -42,6 +41,8 @@ const HomePage=()=>{
 
     const [data,setData]=useState([])
     const [loading,setLoading]=useState(true)
+    const [option,setOption]=useState([])
+    const [value,setValue]=useState('')
 
     useEffect(()=>{
         axios.get('http://127.0.0.1:8091/catalog/categories').then(
@@ -102,6 +103,29 @@ const HomePage=()=>{
         </Radio.Group>)
     }
 
+    function OptionList(){
+        return <>
+            {
+                option.length===0?
+                    null
+                    :
+                    option.map(value=>{
+                        return <div
+                            id='option'
+                            style={{width:'100%',fontSize:18}}
+                            onClick={()=>{
+                                setValue(value.productId+'——'+value.productName)
+                                setOption([])
+                            }}
+                        >
+                            <div style={{width:'98%',marginLeft:'2%',cursor:'pointer'}}>
+                                {value.productId}——{value.productName}
+                            </div>
+                        </div>
+                    })
+            }
+        </>
+    }
 
     return <>
         {
@@ -112,7 +136,7 @@ const HomePage=()=>{
                     <div style={{height:'51%',width:'100%',marginTop:'2%'}}>
                         <div style={{width:'100%',height:'100%',display:'flex',justifyContent:'space-between'}}>
                             <Carousel
-                                style={{ width: '40%',height:'95%',marginLeft:'5%'}}
+                                style={{ width: '40%',height:'100%',marginLeft:'5%'}}
                             >
                                 {pictures.map((value, index) => (
                                     <div key={index}>
@@ -124,9 +148,39 @@ const HomePage=()=>{
                                     </div>
                                 ))}
                             </Carousel>
-                            <div style={{width:'45%',height:'100%',marginRight:'5%',marginTop:'2%'}}>
-                                <img alt={'松鼠'} src={songshu} style={{width:'70%',height:'63%',float:'right',margin:'1%'}}/>
-                                <div style={{color:'gray' ,fontSize:20,width:'100%',height:'100%'}}>
+                            <div style={{width:'45%',height:'100%',marginRight:'5%'}}>
+                                <div style={{color:'gray' ,fontSize:20,width:'100%',height:'50%',display:'flex',justifyContent:'center'}}>
+                                    <div>
+                                        <Input
+                                            style={{ width: 350,height:40,borderRadius:'5px 0px 0px 5px',border:'solid 1px #165DFF'}}
+                                            onChange={value => {
+                                                setValue(value)
+                                                axios.get(`http://127.0.0.1:8091/catalog/search/${value}`).then(
+                                                    res=>{
+                                                        setOption(res.data.data)
+                                                    },
+                                                    error=>{
+                                                        setOption([])
+                                                    }
+                                                )
+                                            }}
+                                            value={value}
+                                        />
+                                        <div style={{width:350,maxHeight:'90%',backgroundColor:'white',borderRadius:5,overflow:'auto'}}>
+                                            <OptionList />
+                                        </div>
+                                    </div>
+                                    <Button
+                                        style={{ height:40,borderRadius:'0px 5px 5px 0px'}}
+                                        type={"primary"}
+                                        onClick={()=>{
+                                            navigate('/main/product/item',{state:value.substring(0,value.indexOf('——'))})
+                                        }}
+                                    >
+                                        搜索
+                                    </Button>
+                                </div>
+                                <div style={{color:'gray' ,fontSize:20,width:'100%',height:'50%',display:'flex',alignItems:'end'}}>
                                     在JpetStore，我们不仅仅是一家普通的宠物商店，我们是一个充满爱心和关怀的家庭。我们相信每只动物都是独一无二的，都值得受到最好的关注和呵护。因此，我们致力于为您提供最高品质的宠物用品和服务，以确保您的毛茸茸朋友健康、快乐地生活。
                                 </div>
                             </div>

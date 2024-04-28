@@ -17,7 +17,7 @@ const ProductItemPage=()=>{
                 setLoading(false)
             },
             err=>{
-                Message.error('请求数据失败！')
+                Message.error('暂无数据！')
                 setLoading(false)
             }
         )
@@ -56,7 +56,7 @@ const ProductItemPage=()=>{
             }
         },
         {
-            title: 'attribute1',
+            title: 'attribute',
             dataIndex: 'attribute1'
         },
     ];
@@ -86,7 +86,7 @@ const ProductItemPage=()=>{
                             style={{width:'80%',marginLeft:'10%',marginTop:30}}
                         />
                         <Button
-                            onClick={()=>{navigate('/main/product',{state:data.categoryId})}}
+                            onClick={()=>{window.history.go(-1)}}
                             type={"primary"}
                             style={{float:'right',marginTop:30,marginRight:'10%'}}
                         >

@@ -9,8 +9,8 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const Option = Select.Option;
-const selectedStyle={width:50,height:31,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'rgba(60,192,201,100%)',color:'white'}
-const notSelectedStyle={width:50,height:31,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'whitesmoke',color:'#4E5969'}
+const selectedStyle={display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'rgba(60,192,201,100%)',color:'white'}
+const notSelectedStyle={display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'whitesmoke',color:'#4E5969'}
 
 const EditInformation =()=>{
     const navigate=useNavigate()
@@ -53,8 +53,6 @@ const EditInformation =()=>{
                 setAddress2(res.data.data.address2)
                 setFavour(res.data.data.favouriteCategoryId)
                 setListOption(res.data.data.listOption)
-
-                console.log(res.data)
                 setLoading(false)
             },
             error=>{
@@ -114,8 +112,29 @@ const EditInformation =()=>{
                                         <div style={{fontSize:17,color:'grey'}}>
                                             <span style={{color:'red'}}>* </span>语言偏好
                                         </div>
-                                        <Input defaultValue={language} style={{ marginBottom:17,marginTop:3,borderRadius:5 }} onChange={value=>{setLanguage(value)}}/>
-                                    </div>
+                                        <Radio.Group
+                                            defaultValue={language}
+                                            onChange={value=>{
+                                                setLanguage(value)
+                                            }}
+                                            name='button-radio-group'
+                                            style={{ marginBottom:15,marginTop:5,display:'flex'}}
+                                        >
+                                            {['english','中文'].map((item) => {
+                                                return (
+                                                    <Radio key={item} value={item}>
+                                                        {({ checked }) => {
+                                                            return (
+                                                                <Button tabIndex={-1} key={item} style={checked ? selectedStyle : notSelectedStyle}>
+                                                                    {item}
+                                                                </Button>
+                                                            );
+                                                        }}
+                                                    </Radio>
+                                                );
+                                            })}
+                                        </Radio.Group>
+                                        </div>
 
                                     <div>
                                         <div style={{fontSize:17,color:'grey'}}>
@@ -136,7 +155,7 @@ const EditInformation =()=>{
                                                 setFavour(value)
                                             }}
                                         >
-                                            {['猫','狗','鱼','鸟','爬行动物'].map((option, index) => (
+                                            {['CATS','DOGS','FISH','BIRDS','REPTILES'].map((option, index) => (
                                                 <Option key={option} value={option}>
                                                     {option}
                                                 </Option>
