@@ -7,7 +7,6 @@ const ProductItemPage=()=>{
     const [loading,setLoading]=useState(true)
     const [data,setData]=useState([])
     const productId=useLocation().state
-    const navigate=useNavigate()
 
     useEffect(()=>{
         axios.get(`http://127.0.0.1:8091/catalog/items/${productId}`).then(
