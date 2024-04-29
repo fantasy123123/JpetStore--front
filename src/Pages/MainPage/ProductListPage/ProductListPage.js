@@ -61,8 +61,8 @@ const ProductListPage=()=>{
                                value:value.productId
                            }
                        ]
-                       return <div onClick={()=>{navigate('/main/product/item',{state:value.productId})}} className={'card'} style={{cursor:'pointer',width:'31%',height:'42%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
-                           <div style={{width:'100%',height:'70%',display:'flex',justifyContent:'center'}}>
+                       return <div onClick={()=>{navigate('/main/product/item',{state:value.productId})}} className={'card'} style={{cursor:'pointer',width:'31%',border:'1px solid lightgrey',borderRadius:5,margin:'1.1%'}}>
+                           <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
                                <img alt={value.name} src={value.descriptionImage} style={{marginTop:'5%'}}/>
                                <div style={{height:'100%',width:'50%',display:'flex',alignItems:'center',justifyContent:'center'}}>
                                    <Descriptions
@@ -88,7 +88,7 @@ const ProductListPage=()=>{
     return <div style={{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
         {
             loading?
-                <Card style={{width:'85%',height:'80%'}} loading={loading} bordered={false}/>
+                <Card style={{width:'10%',height:'100%'}} loading={loading} bordered={false}/>
                 :
                 <>
                     {
@@ -97,7 +97,7 @@ const ProductListPage=()=>{
                                 很抱歉，未找到您所搜索的商品！
                             </div>
                             :
-                            <div style={{width:'85%',height:'80%',backgroundColor:"white",borderRadius:20,overflow:'auto',padding:'2%',display:'flex',flexWrap:'wrap',justifyContent:'flex-start'}}>
+                            <div style={{width:'85%',backgroundColor:"white",borderRadius:20,overflow:'auto',padding:'2%',display:'flex',flexWrap:'wrap',justifyContent:'flex-start',marginTop:70,marginBottom:70}}>
                                 <ProductList />
                             </div>
                     }

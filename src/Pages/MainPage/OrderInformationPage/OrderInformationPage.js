@@ -190,7 +190,7 @@ const OrderInformationPage=()=>{
         },
     ];
 
-    return   <div style={{textAlign:'center',position:'absolute',top:0,bottom:0,left:0,right:0}}>
+    return   <div style={{textAlign:'center',width:'100%',}}>
         {
             loading?
                 <Card style={{width:'100%',height:'100%'}} loading={loading} bordered={false}/>
@@ -262,7 +262,7 @@ const OrderInformationPage=()=>{
                             确认
                         </Button>
                     </div>
-                    <div style={{width:"100%",height:20}}></div>
+                    <div style={{width:"100%",height:30}}></div>
                 </>
         }
     </div>

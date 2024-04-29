@@ -6,6 +6,7 @@ const InitialPage=()=>{
     const navigate=useNavigate()
 
     useEffect(()=>{
+        sessionStorage.setItem('post','not')
         navigate('/signIn')
     })
 

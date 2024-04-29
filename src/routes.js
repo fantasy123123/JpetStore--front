@@ -12,6 +12,7 @@ import ProductItemPage from "./Pages/MainPage/ProductItemPage/ProductItemPage";
 import OrderPage from "./Pages/MainPage/OrderPage/OrderPage";
 import OrderInformationPage from "./Pages/MainPage/OrderInformationPage/OrderInformationPage";
 import ItemInformationPage from "./Pages/MainPage/ProductItemInformationPage/ItemInformationPage";
+import EditAddress from "./Pages/MainPage/InformationPage/EditAddress";
 
 const routes=[
     {
@@ -53,6 +54,10 @@ const routes=[
             {
                 path: '/main/information/edit',
                 element: <EditInformation />,
+            },
+            {
+                path: '/main/address/edit',
+                element: <EditAddress />,
             },
             {
                 path: '/main/cart',

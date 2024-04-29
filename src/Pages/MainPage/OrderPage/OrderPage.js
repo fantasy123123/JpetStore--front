@@ -49,7 +49,7 @@ const OrderPage=()=>{
     ];
 
     return <>
-        <div style={{textAlign:'center',position:'absolute',top:0,bottom:0,left:0,right:0}}>
+        <div style={{textAlign:'center',width:'100%'}}>
             {
                 loading?
                     <Card style={{width:'100%',height:'100%'}} loading={loading} bordered={false}/>
@@ -62,6 +62,7 @@ const OrderPage=()=>{
                             data={data}
                             style={{width:'60%',marginLeft:'20%',marginTop:30}}
                         />
+                        <div style={{width:'100%',height:30}}/>
                     </>
             }
         </div>

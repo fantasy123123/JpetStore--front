@@ -132,7 +132,7 @@ const HomePage=()=>{
             loading ?
                 <Card style={{width:'100%',height:'100%'}} loading={loading} bordered={false}/>
                 :
-                <div style={{width:'100%',height:'100%'}}>
+                <div style={{width:'100%'}}>
                     <div style={{height:'51%',width:'100%',marginTop:'2%'}}>
                         <div style={{width:'100%',height:'100%',display:'flex',justifyContent:'space-between'}}>
                             <Carousel

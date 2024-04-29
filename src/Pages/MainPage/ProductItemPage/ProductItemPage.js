@@ -66,7 +66,7 @@ const ProductItemPage=()=>{
             loading?
                 <Card style={{width:'100%',height:'100%'}} loading={loading} bordered={false}/>
                 :
-                <div style={{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',marginTop:70,marginBottom:70}}>
                     <div style={{width:'80%',backgroundColor:"white",borderRadius:20,padding:'2%'}}>
                         <div style={{display:'flex',justifyContent:'space-around',fontSize:20,fontWeight:'bold',width:'100%'}}>
                             <div>

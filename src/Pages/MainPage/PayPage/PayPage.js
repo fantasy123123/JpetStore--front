@@ -72,42 +72,88 @@ const PayPage=()=>{
     },[])
 
     useEffect(()=>{
-        axios.post('http://127.0.0.1:8091/order/check',{
-                "billAddress1": address1,
-                "billAddress2": address2,
-                "billCity": city,
-                "billCountry": country,
-                "billState": state,
-                "billToFirstName": firstName,
-                "billToLastName": lastName,
-                "billZip": zip,
-                "shipAddress1": address1,
-                "shipAddress2": address2,
-                "shipCity": city,
-                "shipCountry": country,
-                "shipState": state,
-                "shipToFirstName": firstName,
-                "shipToLastName": lastName,
-                "shipZip": zip,
-                "cardType": "Visa",
-                "courier": "UPS",
-                "creditCard": "999 9999 9999 9999",
-                "expiryDate": "12/03",
-                "locale": "CA",
-            },
-            {
-                headers:{
-                    "token":sessionStorage.getItem("token")
-                }
+        axios.get(`http://127.0.0.1:8091/order/orderTemplate`,{
+            headers:{
+                "token":sessionStorage.getItem("token")
             }
-        ).then(
+        }).then(
             res=>{
-                setData({...res.data.data})
-                setLoading(false)
+                axios.post('http://127.0.0.1:8091/order/check',{
+                        "billAddress1": res.data.data.billAddress1,
+                        "billAddress2": res.data.data.billAddress2,
+                        "billCity": res.data.data.billCity,
+                        "billCountry": res.data.data.billCountry,
+                        "billState": res.data.data.billState,
+                        "billToFirstName": res.data.data.billToFirstName,
+                        "billToLastName": res.data.data.billToLastName,
+                        "billZip": res.data.data.billZip,
+                        "shipAddress1": res.data.data.shipAddress1,
+                        "shipAddress2": res.data.data.shipAddress2,
+                        "shipCity": res.data.data.shipCity,
+                        "shipCountry": res.data.data.shipCountry,
+                        "shipState": res.data.data.shipState,
+                        "shipToFirstName": res.data.data.shipToFirstName,
+                        "shipToLastName": res.data.data.shipToLastName,
+                        "shipZip": res.data.data.shipZip,
+                        "cardType": res.data.data.cardType,
+                        "courier": "UPS",
+                        "creditCard": res.data.data.creditCard,
+                        "expiryDate": res.data.data.expiryDate,
+                        "locale": "CA",
+                    },
+                    {
+                        headers:{
+                            "token":sessionStorage.getItem("token")
+                        }
+                    }
+                ).then(
+                    res=>{
+                        setData({...res.data.data})
+                        setLoading(false)
+                    },
+                    error=>{
+                        setLoading(false)
+                    }
+                )
             },
             error=>{
-                Message.error('创建订单失败!')
-                setLoading(false)
+                axios.post('http://127.0.0.1:8091/order/check',{
+                        "billAddress1": address1,
+                        "billAddress2": address2,
+                        "billCity": city,
+                        "billCountry": country,
+                        "billState": state,
+                        "billToFirstName": firstName,
+                        "billToLastName": lastName,
+                        "billZip": zip,
+                        "shipAddress1": address1,
+                        "shipAddress2": address2,
+                        "shipCity": city,
+                        "shipCountry": country,
+                        "shipState": state,
+                        "shipToFirstName": firstName,
+                        "shipToLastName": lastName,
+                        "shipZip": zip,
+                        "cardType": "Visa",
+                        "courier": "UPS",
+                        "creditCard": "999 9999 9999 9999",
+                        "expiryDate": "12/03",
+                        "locale": "CA",
+                    },
+                    {
+                        headers:{
+                            "token":sessionStorage.getItem("token")
+                        }
+                    }
+                ).then(
+                    res=>{
+                        setData({...res.data.data})
+                        setLoading(false)
+                    },
+                    error=>{
+                        setLoading(false)
+                    }
+                )
             }
         )
     },[get])
@@ -264,7 +310,7 @@ const PayPage=()=>{
         },
     ];
 
-    return   <div style={{textAlign:'center',position:'absolute',top:0,bottom:0,left:0,right:0}}>
+    return   <div style={{textAlign:'center',width:'100%'}}>
         {
             loading?
                 <Card style={{width:'100%',height:'100%'}} loading={loading} bordered={false}/>
@@ -335,9 +381,7 @@ const PayPage=()=>{
                             返回
                         </Button>
                     </div>
-                    <div style={{width:"100%",height:20}}>
-
-                    </div>
+                    <div style={{width:"100%",height:30}}></div>
                 </>
         }
     </div>

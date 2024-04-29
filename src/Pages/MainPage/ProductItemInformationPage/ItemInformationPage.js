@@ -65,67 +65,69 @@ const ItemInformationPage=()=>{
         },
     ]
 
-    return <div style={{position:'absolute',top:0,bottom:0,left:0,right:0,display:'flex',alignItems:'center',justifyContent:'center'}}>
+    return <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
         <>
             {
                 loading?
                     <Card style={{width:'100%',height:'100%'}} loading={loading} bordered={false}/>
                     :
-                    <div style={{width:'70%',height:'80%',backgroundColor:'white',borderRadius:10}}>
-                        <div style={{display:'flex',justifyContent:'space-between',width:'90%',marginLeft:'5%',marginTop:'2.5%',height:'95%'}}>
-                            <div style={{width:'50%',height:'100%',marginLeft:'10%'}}>
-                                <img alt={data.name} src={data.descriptionImage} style={{height:'50%'}}/>
-                                <div  style={{fontSize:20,marginTop:'10%'}}>
-                                    数量：{number} 只
-                                </div>
-                                <div style={{fontSize:20,marginTop:5}}>
-                                    价格：{number*data.listPrice} 元
-                                </div>
-                                <div style={{marginTop:10}}>
-                                    <Button
-                                        onClick={()=>{
-                                            axios.post(`http://127.0.0.1:8091/cart/cartItem/${itemId}`,{},{
-                                                headers:{
-                                                    token:sessionStorage.getItem('token')
-                                                }
-                                            }).then(
-                                                res=>{
-                                                    if(res.data.msg==='success'){
-                                                        Message.info('添加到购物车成功！')
+                    <>
+                        <div style={{width:'70%',backgroundColor:'white',borderRadius:10,marginTop:70,marginBottom:70}}>
+                            <div style={{display:'flex',justifyContent:'space-between',width:'90%',marginLeft:'5%',marginTop:'2.5%',height:'95%'}}>
+                                <div style={{width:'50%',height:'100%',marginLeft:'10%'}}>
+                                    <img alt={data.name} src={data.descriptionImage} style={{width:'50%'}}/>
+                                    <div  style={{fontSize:20,marginTop:'10%'}}>
+                                        数量：{number} 只
+                                    </div>
+                                    <div style={{fontSize:20,marginTop:5}}>
+                                        价格：{number*data.listPrice} 元
+                                    </div>
+                                    <div style={{marginTop:10}}>
+                                        <Button
+                                            onClick={()=>{
+                                                axios.post(`http://127.0.0.1:8091/cart/cartItem/${itemId}`,{},{
+                                                    headers:{
+                                                        token:sessionStorage.getItem('token')
                                                     }
-                                                },
-                                                err=>{
-                                                    Message.error('添加失败，请稍后重试！')
-                                                }
-                                            )
-                                    }}
-                                        type={"primary"}
-                                        style={{marginRight:30}}
-                                    >
-                                        添加至购物车
-                                    </Button>
-                                    <Button onClick={()=>{
-                                        window.history.go(-1)
-                                    }}>
-                                        返回
-                                    </Button>
+                                                }).then(
+                                                    res=>{
+                                                        if(res.data.msg==='success'){
+                                                            Message.info('添加到购物车成功！')
+                                                        }
+                                                    },
+                                                    err=>{
+                                                        Message.error('添加失败，请稍后重试！')
+                                                    }
+                                                )
+                                            }}
+                                            type={"primary"}
+                                            style={{marginRight:30}}
+                                        >
+                                            添加至购物车
+                                        </Button>
+                                        <Button onClick={()=>{
+                                            window.history.go(-1)
+                                        }}>
+                                            返回
+                                        </Button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div style={{width:'50%',height:'100%'}}>
-                                <div style={{fontSize:25,fontWeight:'bold'}}>商品信息</div>
-                                <div style={{width:'90%',height:'100%'}}>
-                                    <Descriptions
-                                        column={1}
-                                        data={column}
-                                        labelStyle={{ paddingRight: 36 ,fontSize:20}}
-                                        valueStyle={{fontSize:20}}
-                                        style={{marginTop:10}}
-                                        size={'large'}
-                                    />
+                                <div style={{width:'50%',height:'100%'}}>
+                                    <div style={{fontSize:25,fontWeight:'bold'}}>商品信息</div>
+                                    <div style={{width:'90%',height:'100%'}}>
+                                        <Descriptions
+                                            column={1}
+                                            data={column}
+                                            labelStyle={{ paddingRight: 36 ,fontSize:20}}
+                                            valueStyle={{fontSize:20}}
+                                            style={{marginTop:10}}
+                                            size={'large'}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </>
             }
         </>
     </div>

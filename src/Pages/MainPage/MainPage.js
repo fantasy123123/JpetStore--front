@@ -12,7 +12,7 @@ const MainPage=()=>{
 
     return (
         <Layout>
-            <Header style={{position:'absolute',left:0,right:0,top:0,bottom:'90%',backgroundColor:'lightskyblue',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+            <Header style={{width:'100%',height:70,backgroundColor:'lightskyblue',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                 <div style={{height:'100%',paddingLeft:'2%',width:'30%',display:'flex',alignItems:'center',justifyContent:'left',fontSize:30,color:'whitesmoke',cursor:'pointer'}}>
                     <span onClick={()=>{navigate('/main/home')}}>
                         JPETSTORE
@@ -110,10 +110,10 @@ const MainPage=()=>{
                     </div>
                 </div>
             </Header>
-            <Content style={{position:'absolute',left:0,top:'10%',bottom:0,right:0,display:'flex'}}>
+            <Content style={{width:'100%',display:'flex'}}>
                 <Outlet />
             </Content>
-            <Footer style={{position:'absolute',left:0,top:'100%',right:0,height:150,width:'100%',fontSize:18,backgroundColor:'lightskyblue',color:'white',display:'flex',justifyContent:'space-around',alignItems:'center'}}>
+            <Footer style={{height:150,width:'100%',fontSize:18,backgroundColor:'lightskyblue',color:'white',display:'flex',justifyContent:'space-around',alignItems:'center'}}>
                 <div style={{width:'50%',textAlign:'center'}}>
                     <span>前端项目仓库：</span><br/>
                     <span onClick={()=>{window.open('https://github.com/fantasy123123/JpetStore--front')}} style={{color:'blue',cursor:'pointer'}}>https://github.com/fantasy123123/JpetStore--front</span><br/>
@@ -183,8 +183,6 @@ const MainPage=()=>{
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </Footer>
         </Layout>

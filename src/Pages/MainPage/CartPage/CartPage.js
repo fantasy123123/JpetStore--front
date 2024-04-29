@@ -254,7 +254,7 @@ const CartPage=()=>{
             loading?
                 <Card style={{width:'100%',height:'100%'}} loading={loading} bordered={false}/>
                 :
-                <div style={{textAlign:'center',position:'absolute',top:0,bottom:0,left:0,right:0}}>
+                <div style={{textAlign:'center',width:'100%'}}>
                     <div style={{display:'flex',marginTop:'1%',justifyContent:'space-between',width:'80%',marginLeft:'10%',alignItems:'center'}}>
                         <div style={{width:'40%'}}></div>
                         <div style={{fontSize:30,fontWeight:'bold'}}>购物车</div>
